@@ -1,0 +1,20 @@
+from plotnine import ggplot, aes, geom_density, labs, theme_bw
+import pandas as pd
+
+# Sample data
+data = pd.DataFrame({
+    'group': ['A'] * 50 + ['B'] * 50,
+    'values': [15, 16, 14, 18, 19, 15, 16, 20, 18, 17] * 5 +
+              [25, 24, 27, 28, 23, 26, 29, 24, 22, 25] * 5
+})
+
+# Create a density plot with two variables
+plot = (
+    ggplot(data, aes(x='values', fill='group'))
+    + geom_density(alpha=0.5)  # alpha controls the transparency
+    + labs(title="Density Plot with Two Variables", x="Values", y="Density", fill="Group")
+    + theme_bw()
+)
+
+# Display the plot
+plot.show()
